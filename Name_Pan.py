@@ -2,7 +2,7 @@ import cv2
 import pytesseract
 import re
 
-pytesseract.pytesseract.tesseract_cmd = 'Path_of_Pytesseract'
+pytesseract.pytesseract.tesseract_cmd = os.getenv('TESSERACT_PATH', '/usr/bin/tesseract')
 def preprocess_dob(text):
     -- Replace 'o' and 'O' with '0' to handle OCR misreadings specifically in DOB
     return text.replace('o', '0').replace('O', '0')
