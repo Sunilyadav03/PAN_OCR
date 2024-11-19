@@ -1,8 +1,9 @@
+import os
 import cv2
 import pytesseract
 import re
 
-pytesseract.pytesseract.tesseract_cmd = 'path of your Pytesseract' 
+pytesseract.pytesseract.tesseract_cmd = os.getenv('TESSERACT_PATH', '/usr/bin/tesseract')
 def extract_pan_details(image_path):
     # Load the image
     image = cv2.imread(image_path)
