@@ -1,0 +1,23 @@
+FROM python:3.12.2-slim
+
+WORKDIR /app
+RUN apt-get update && apt-get install -y \
+    tesseract-ocr \
+    libtesseract-dev \
+    libleptonica-dev \
+    tesseract-ocr-eng \
+    gcc \
+    g++ \
+    libgl1 \
+    libglib2.0-0 \
+    && apt-get clean
+
+
+ENV TESSERACT_PATH=/usr/bin/tesseract
+
+COPY requirements.txt .
+COPY . .
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+CMD ["python", "name of .py file"]
